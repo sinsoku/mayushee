@@ -1,3 +1,6 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :name
+  include ActiveModel::ForbiddenAttributesProtection
+
+  has_many :duties
+  has_many :projects, through: :users
 end
