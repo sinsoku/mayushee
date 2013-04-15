@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
   has_many :duties
   has_many :projects, through: :duties
 
-  validate :login, presence: true
+  validate :login, presence: true, length: { maximum: 20 }
 end
