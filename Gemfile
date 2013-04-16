@@ -21,6 +21,7 @@ gem 'jquery-rails'
 gem 'strong_parameters'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'rspec-rails'
