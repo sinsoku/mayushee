@@ -17,6 +17,7 @@ end
 
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'enumerize'
 gem 'jquery-rails'
 gem 'strong_parameters'
 
