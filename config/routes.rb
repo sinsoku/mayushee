@@ -5,5 +5,7 @@ Mayushee::Application.routes.draw do
     resources :duties
   end
 
+  resources :users
+
   devise_for :users
 end
