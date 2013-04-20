@@ -22,28 +22,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'user was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      redirect_to users_url, notice: 'user was successfully created.'
+    else
+      render action: "new"
     end
   end
 
   def update
     @user = User.find(params[:id])
 
-    respond_to do |format|
-      if @user.update_attributes(user_params)
-        format.html { redirect_to @user, notice: 'user was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update_attributes(user_params)
+      redirect_to users_url, notice: 'user was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -51,15 +43,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
+    redirect_to users_url
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:description, :name)
+      params.require(:user).permit(:login, :password, :password_confirmation, :name, :email, :role)
     end
 end
