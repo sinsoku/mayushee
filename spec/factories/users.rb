@@ -2,12 +2,12 @@
 
 FactoryGirl.define do
   factory :user do
-    login                 'yoshioka'
-    password              'password'
-    password_confirmation 'password'
-    name                  'Ryoji Yoshioka'
-    email                 'yoshioka.ryoji@gmail.com'
-    role                  'develop'
+    login                 'admin'
+    password              'changeme'
+    password_confirmation 'changeme'
+    name                  'Administrator'
+    email                 'admin@example.com'
+    role                  'admin'
     factory :admin_user do
       role 'admin'
     end
