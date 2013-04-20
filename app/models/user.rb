@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :duties
 
   validate :login, presence: true, length: { maximum: 20 }
+  validate :role, presence: true
 
   enumerize :role, in: %w[admin develop test]
 end
