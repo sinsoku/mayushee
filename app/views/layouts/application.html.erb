@@ -14,8 +14,12 @@
         <%= link_to 'Mayushee', root_path, class: 'brand' %>
         <ul class="nav">
           <li class="active"><%= link_to 'Home', root_path %></li>
-          <li><%= link_to 'Project List', projects_path %></li>
-          <li><%= link_to 'User List', '#' %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Project List', projects_path %></li>
+            <% if can? :read, User %>
+              <li><%= link_to 'User List', users_path %></li>
+            <% end %>
+          <% end %>
         </ul>
         <ul class="nav pull-right">
           <% if user_signed_in? %>

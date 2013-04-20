@@ -16,13 +16,17 @@ group :assets do
 end
 
 gem 'bootstrap-sass'
+gem 'cancan'
 gem 'devise'
+gem 'enumerize'
 gem 'jquery-rails'
 gem 'strong_parameters'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'puma'
   gem 'rspec-rails'
   gem 'spring'
 end

@@ -19,7 +19,11 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe ProjectsController do
-  before { controller.stub(:authenticate_user!).and_return true }
+  before do
+    @user = create :admin_user
+    controller.stub(:authenticate_user!).and_return true
+    controller.stub(:current_user).and_return @user
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Project. As you add validations to Project, be sure to
