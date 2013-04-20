@@ -16,6 +16,7 @@ group :assets do
 end
 
 gem 'bootstrap-sass'
+gem 'cancan'
 gem 'devise'
 gem 'enumerize'
 gem 'jquery-rails'
