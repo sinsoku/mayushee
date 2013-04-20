@@ -1,4 +1,6 @@
 Mayushee::Application.routes.draw do
+  devise_for :users
+
   root :to => 'projects#index'
 
   resources :projects do
@@ -6,6 +8,4 @@ Mayushee::Application.routes.draw do
   end
 
   resources :users
-
-  devise_for :users
 end

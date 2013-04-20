@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  extend Enumerize
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -9,4 +10,6 @@ class User < ActiveRecord::Base
   has_many :projects, through: :duties
 
   validate :login, presence: true, length: { maximum: 20 }
+
+  enumerize :role, in: %w[admin develop test]
 end
