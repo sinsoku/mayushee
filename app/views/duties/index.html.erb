@@ -9,11 +9,21 @@
   </div>
   <div class="span10">
     <h1><%= @project.name %></h1>
+    <p><%= link_to 'Add User', new_project_duty_path(@project), class: 'btn pull-right' %></p>
 
-    <ul>
+    <table class='table'>
+      <tr>
+        <th>User</th>
+        <th>Role</th>
+        <th></th>
+      </tr>
       <% @duties.each do |duty| %>
-        <li><%= duty.user.name %></li>
+        <tr>
+          <td><%= duty.user.name %></td>
+          <td><%= duty.role.name_text %></td>
+          <td></td>
+        </tr>
       <% end %>
-    </ul>
+    </table>
   </div>
 </div>

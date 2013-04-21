@@ -1,0 +1,33 @@
+<h1>New duty</h1>
+
+<%= form_for([@project, @duty], html: { class: 'form-horizontal' }) do |f| %>
+  <% if @duty.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@duty.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% @duty.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :user, class: 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :user_id, @users, :id, :name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :role, class: 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :role_id, @roles, :id, :name_text %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Create", class: 'btn' %>
+    </div>
+  </div>
+<% end %>
