@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421102021) do
+ActiveRecord::Schema.define(:version => 20130421102150) do
 
   create_table "commitments", :force => true do |t|
     t.integer  "user_id"
@@ -122,5 +122,18 @@ ActiveRecord::Schema.define(:version => 20130421102021) do
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "work_hours", :force => true do |t|
+    t.integer  "hours"
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.integer  "old_hours_left"
+    t.date     "date_on"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "work_hours", ["task_id"], :name => "index_work_hours_on_task_id"
+  add_index "work_hours", ["user_id"], :name => "index_work_hours_on_user_id"
 
 end

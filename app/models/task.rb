@@ -1,4 +1,4 @@
 class Task < ActiveRecord::Base
+  has_many :work_hours, dependent: :destroy
   belongs_to :story
-  attr_accessible :description, :hours_left, :name, :original_estimation
 end
