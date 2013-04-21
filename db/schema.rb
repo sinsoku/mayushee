@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415004248) do
+ActiveRecord::Schema.define(:version => 20130421014816) do
 
   create_table "duties", :force => true do |t|
     t.integer  "user_id"
@@ -38,6 +38,22 @@ ActiveRecord::Schema.define(:version => 20130415004248) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "sprints", :force => true do |t|
+    t.date     "start_on"
+    t.date     "finish_on"
+    t.integer  "number_of_workdays"
+    t.string   "demo_meeting"
+    t.string   "scrum_meeting"
+    t.string   "retrospective_meeting"
+    t.float    "estimated_focus_factor"
+    t.text     "retrospective_report"
+    t.integer  "project_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "sprints", ["project_id"], :name => "index_sprints_on_project_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                  :default => "", :null => false
