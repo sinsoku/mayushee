@@ -1,0 +1,6 @@
+<ul class="nav nav-tabs nav-stacked">
+  <li><%= link_to 'Dashboard', @project %></li>
+  <li><%= link_to 'Backlogs', project_stories_path(@project) %></li>
+  <li><%= link_to 'Users & Roles', project_duties_path(@project) %></li>
+  <li><%= link_to 'Sprints', project_sprints_path(@project) %></li>
+</ul>

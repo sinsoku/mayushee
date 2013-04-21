@@ -1,0 +1,27 @@
+<div class="row-fluid">
+  <div class="span2">
+    <%= render 'shared/sidebar' %>
+  </div>
+  <div class="span10">
+    <h1><%= @project.name %></h1>
+    <p><%= link_to 'Create New', new_project_story_path(@project), class: 'btn pull-right' %></p>
+
+    <table class='table'>
+      <tr>
+        <th>Imp.</th>
+        <th>Name</th>
+        <th>Storypoints</th>
+        <th></th>
+      </tr>
+      <% @stories.each do |story| %>
+        <tr>
+          <td><%= story.importance %></td>
+          <td><%= story.name %></td>
+          <td><%= story.storypoints %></td>
+          <td><%= link_to 'Edit', '#', class: 'btn' %></td>
+        </tr>
+      <% end %>
+    </table>
+ 
+  </div>
+</div>

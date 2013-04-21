@@ -1,0 +1,45 @@
+<h1>New story</h1>
+
+<%= form_for([@project, @story], html: { class: 'form-horizontal' }) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% @story.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :importance, class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :importance %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :storypoints, class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :storypoints %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Create", class: 'btn' %>
+    </div>
+  </div>
+<% end %>

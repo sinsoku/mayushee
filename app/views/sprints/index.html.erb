@@ -1,11 +1,6 @@
 <div class="row-fluid">
   <div class="span2">
-    <ul class="nav nav-tabs nav-stacked">
-      <li><%= link_to 'Dashboard', @project %></li>
-      <li><%= link_to 'Backlogs', '#' %></li>
-      <li><%= link_to 'Users & Roles', project_duties_path(@project) %></li>
-      <li><%= link_to 'Sprints', project_sprints_path(@project) %></li>
-    </ul>
+    <%= render 'shared/sidebar' %>
   </div>
   <div class="span10">
     <h1><%= @project.name %></h1>
