@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421100901) do
+ActiveRecord::Schema.define(:version => 20130421101757) do
+
+  create_table "commitments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sprint_id"
+    t.float    "level"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "commitments", ["sprint_id"], :name => "index_commitments_on_sprint_id"
+  add_index "commitments", ["user_id"], :name => "index_commitments_on_user_id"
 
   create_table "duties", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +35,18 @@ ActiveRecord::Schema.define(:version => 20130421100901) do
   add_index "duties", ["project_id"], :name => "index_duties_on_project_id"
   add_index "duties", ["role_id"], :name => "index_duties_on_role_id"
   add_index "duties", ["user_id"], :name => "index_duties_on_user_id"
+
+  create_table "plannings", :force => true do |t|
+    t.integer  "story_id"
+    t.integer  "sprint_id"
+    t.integer  "original_estimation"
+    t.boolean  "unexpected"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "plannings", ["sprint_id"], :name => "index_plannings_on_sprint_id"
+  add_index "plannings", ["story_id"], :name => "index_plannings_on_story_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
