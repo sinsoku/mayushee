@@ -1,0 +1,45 @@
+<h1>New Sprint</h1>
+
+<%= form_for([@project, @sprint], html: { class: 'form-horizontal' }) do |f| %>
+  <% if @sprint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sprint.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% @sprint.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :start_on, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_on, type: 'date' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :finish_on, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :finish_on, type: 'date' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :number_of_workdays, class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :number_of_workdays %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :estimated_focus_factor, class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :estimated_focus_factor %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Create", class: 'btn' %>
+    </div>
+  </div>
+<% end %>
