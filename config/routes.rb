@@ -6,6 +6,7 @@ Mayushee::Application.routes.draw do
   resources :projects do
     resources :duties
     resources :sprints
+    resources :stories
   end
 
   resources :users

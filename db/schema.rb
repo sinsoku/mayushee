@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421014816) do
+ActiveRecord::Schema.define(:version => 20130421102150) do
+
+  create_table "commitments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sprint_id"
+    t.float    "level"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "commitments", ["sprint_id"], :name => "index_commitments_on_sprint_id"
+  add_index "commitments", ["user_id"], :name => "index_commitments_on_user_id"
 
   create_table "duties", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +35,18 @@ ActiveRecord::Schema.define(:version => 20130421014816) do
   add_index "duties", ["project_id"], :name => "index_duties_on_project_id"
   add_index "duties", ["role_id"], :name => "index_duties_on_role_id"
   add_index "duties", ["user_id"], :name => "index_duties_on_user_id"
+
+  create_table "plannings", :force => true do |t|
+    t.integer  "story_id"
+    t.integer  "sprint_id"
+    t.integer  "original_estimation"
+    t.boolean  "unexpected"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "plannings", ["sprint_id"], :name => "index_plannings_on_sprint_id"
+  add_index "plannings", ["story_id"], :name => "index_plannings_on_story_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -55,6 +78,30 @@ ActiveRecord::Schema.define(:version => 20130421014816) do
 
   add_index "sprints", ["project_id"], :name => "index_sprints_on_project_id"
 
+  create_table "stories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "storypoints"
+    t.integer  "importance"
+    t.integer  "project_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "stories", ["project_id"], :name => "index_stories_on_project_id"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "original_estimation"
+    t.integer  "hours_left"
+    t.integer  "story_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "tasks", ["story_id"], :name => "index_tasks_on_story_id"
+
   create_table "users", :force => true do |t|
     t.string   "login",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -75,5 +122,18 @@ ActiveRecord::Schema.define(:version => 20130421014816) do
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "work_hours", :force => true do |t|
+    t.integer  "hours"
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.integer  "old_hours_left"
+    t.date     "date_on"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "work_hours", ["task_id"], :name => "index_work_hours_on_task_id"
+  add_index "work_hours", ["user_id"], :name => "index_work_hours_on_user_id"
 
 end

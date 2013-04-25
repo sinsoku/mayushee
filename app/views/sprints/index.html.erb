@@ -1,13 +1,30 @@
 <div class="row-fluid">
   <div class="span2">
-    <ul class="nav nav-tabs nav-stacked">
-      <li><%= link_to 'Dashboard', @project %></li>
-      <li><%= link_to 'Backlogs', '#' %></li>
-      <li><%= link_to 'Users & Roles', project_duties_path(@project) %></li>
-      <li><%= link_to 'Sprints', project_sprints_path(@project) %></li>
-    </ul>
+    <%= render 'shared/sidebar' %>
   </div>
   <div class="span10">
     <h1><%= @project.name %></h1>
+    <p><%= link_to 'Create New', new_project_sprint_path(@project), class: 'btn pull-right' %></p>
+
+    <table class='table'>
+      <tr>
+        <th>Iteration</th>
+        <th>Dates</th>
+        <th>Focus factor</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      <% @sprints.each do |sprint| %>
+        <tr>
+          <td><%= 1 %></td>
+          <td><%= sprint.start_on %></td>
+          <td><%= sprint.estimated_focus_factor %></td>
+          <td><%=  %></td>
+          <td>
+            <%= link_to 'Edit', '#', class: 'btn' %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
