@@ -12,11 +12,11 @@ describe DutiesController do
     end
 
     it "routes to #show" do
-      get("/projects/1/duties/1").should route_to("duties#show", project_id: '1', id: "1")
+      get("/duties/1").should route_to("duties#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/projects/1/duties/1/edit").should route_to("duties#edit", project_id: '1', id: "1")
+      get("/duties/1/edit").should route_to("duties#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe DutiesController do
     end
 
     it "routes to #update" do
-      put("/projects/1/duties/1").should route_to("duties#update", project_id: '1', id: "1")
+      put("/duties/1").should route_to("duties#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/projects/1/duties/1").should route_to("duties#destroy", project_id: '1', id: "1")
+      delete("/duties/1").should route_to("duties#destroy", id: "1")
     end
 
   end
