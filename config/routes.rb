@@ -3,10 +3,12 @@ Mayushee::Application.routes.draw do
 
   root :to => 'projects#index'
 
-  resources :projects do
+  resources :projects, shallow: true do
     resources :duties
     resources :sprints
-    resources :stories
+    resources :stories do
+      resources :tasks
+    end
   end
 
   resources :users

@@ -12,11 +12,11 @@ describe StoriesController do
     end
 
     it "routes to #show" do
-      get("/projects/1/stories/1").should route_to("stories#show", project_id: '1', id: "1")
+      get("/stories/1").should route_to("stories#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/projects/1/stories/1/edit").should route_to("stories#edit", project_id: '1', id: "1")
+      get("/stories/1/edit").should route_to("stories#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe StoriesController do
     end
 
     it "routes to #update" do
-      put("/projects/1/stories/1").should route_to("stories#update", project_id: '1', id: "1")
+      put("/stories/1").should route_to("stories#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/projects/1/stories/1").should route_to("stories#destroy", project_id: '1', id: "1")
+      delete("/stories/1").should route_to("stories#destroy", id: "1")
     end
 
   end

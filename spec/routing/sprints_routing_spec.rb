@@ -12,11 +12,11 @@ describe SprintsController do
     end
 
     it "routes to #show" do
-      get("/projects/1/sprints/1").should route_to("sprints#show", project_id: '1', id: "1")
+      get("/sprints/1").should route_to("sprints#show", id: "1")
     end
 
     it "routes to #edit" do
-      get("/projects/1/sprints/1/edit").should route_to("sprints#edit", project_id: '1', id: "1")
+      get("/sprints/1/edit").should route_to("sprints#edit", id: "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe SprintsController do
     end
 
     it "routes to #update" do
-      put("/projects/1/sprints/1").should route_to("sprints#update", project_id: '1', id: "1")
+      put("/sprints/1").should route_to("sprints#update", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("/projects/1/sprints/1").should route_to("sprints#destroy", project_id: '1', id: "1")
+      delete("/sprints/1").should route_to("sprints#destroy", id: "1")
     end
 
   end
