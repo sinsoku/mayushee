@@ -25,6 +25,7 @@
 
 * [![Build Status](https://travis-ci.org/ryog/mayushee.png?branch=develop)](https://travis-ci.org/ryog/mayushee)
 * [![Dependency Status](https://gemnasium.com/ryog/mayushee.png)](https://gemnasium.com/ryog/mayushee)
+* [![Code Climate](https://codeclimate.com/github/ryog/mayushee.png)](https://codeclimate.com/github/ryog/mayushee)
 
 ## Demo Site
 
