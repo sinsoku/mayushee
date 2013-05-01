@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
   end
 
   def show
-    @story = Story.find(params[:id])
+    @story = Story.includes(:tasks).find(params[:id])
     @project = @story.project
   end
 

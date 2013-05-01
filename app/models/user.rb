@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   has_many :roles, through: :duties
   has_many :work_hours
 
-  validate :login, presence: true, length: { maximum: 20 }
-  validate :role, presence: true
+  validates :login, presence: true, length: { maximum: 20 }
+  validates :role, presence: true
 
   enumerize :role, in: %w[admin develop test]
 end
