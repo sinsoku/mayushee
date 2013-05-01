@@ -10,6 +10,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @project = @story.project
   end
 
   def new

@@ -4,18 +4,13 @@ class TasksController < ApplicationController
 
   authorize_resource
 
-  def index
-    @project = @story.project
-    @tasks = @story.tasks
-  end
-
   def new
     @task = Task.new
   end
 
   def create
     if @story.tasks.create(task_params)
-      redirect_to story_tasks_url(@story)
+      redirect_to story_path(@story.project, @story)
     else
       render :new
     end
