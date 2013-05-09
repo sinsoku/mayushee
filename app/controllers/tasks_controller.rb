@@ -1,12 +1,11 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :set_story
+  before_filter :set_story, except: [:show]
 
   authorize_resource
 
-  def index
-    @project = @story.project
-    @tasks = @story.tasks
+  def show
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -14,8 +13,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    if @story.tasks.create(task_params)
-      redirect_to story_tasks_url(@story)
+    @task = @story.tasks.build(task_params)
+    if @task.save
+      redirect_to story_path(@story.project, @story)
     else
       render :new
     end
@@ -28,6 +28,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :description)
+      params.require(:task).permit(:name, :description, :original_estimation)
     end
 end

@@ -1,11 +1,16 @@
 class StoriesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :set_project
+  before_filter :set_project, only: [:index, :new, :create]
 
   authorize_resource
 
   def index
     @stories = @project.stories
+  end
+
+  def show
+    @story = Story.includes(:tasks).find(params[:id])
+    @project = @story.project
   end
 
   def new

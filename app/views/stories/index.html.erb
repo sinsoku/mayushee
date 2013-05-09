@@ -11,13 +11,14 @@
         <th>Imp.</th>
         <th>Name</th>
         <th>Storypoints</th>
-        <th></th>
+        <th colspan='2'></th>
       </tr>
       <% @stories.each do |story| %>
         <tr>
           <td><%= story.importance %></td>
           <td><%= story.name %></td>
           <td><%= story.storypoints %></td>
+          <td><%= link_to 'Show', story_path(@project, @story), class: 'btn' %></td>
           <td><%= link_to 'Edit', '#', class: 'btn' %></td>
         </tr>
       <% end %>
