@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :set_story, except: [:show, :edit, :update]
+  before_filter :set_story, only: [:new, :create]
 
   authorize_resource
 
@@ -33,6 +33,13 @@ class TasksController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @story = @task.story
+    @task.destroy
+    redirect_to story_path(@story)
   end
 
   private

@@ -23,7 +23,7 @@
                 <td><%= "#{task.original_estimation}h left" %></td>
                 <td>
                   <%= link_to 'Edit', edit_task_path(task) %> |
-                  <%= link_to 'Delete', '#' %>
+                  <%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' } %>
                 </td>
               </tr>
             <% end %>
