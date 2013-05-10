@@ -4,6 +4,6 @@ class Story < ActiveRecord::Base
   belongs_to :project
 
   def hours_left
-    self.tasks.empty? ? zero : self.tasks.map(&:hours_left).sum
+    self.tasks.empty? ? 0 : self.tasks.map(&:hours_left).sum
   end
 end
