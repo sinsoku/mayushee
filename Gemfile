@@ -29,4 +29,6 @@ group :development, :test do
   gem 'puma'
   gem 'rspec-rails'
   gem 'spring'
+
+  gem 'therubyracer', :platforms => :ruby
 end
